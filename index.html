@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b14">
+  <meta name="description" content="NEXA AI — Your intelligent workspace.">
+  <title>NEXA AI — Your AI workspace</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <span>NEXA<span class="brand-light"> AI</span></span>
+        <button class="icon-button mobile-close" id="closeSidebar" aria-label="Close menu">×</button>
+      </div>
+
+      <button class="new-chat-button" id="newChat">
+        <span>＋</span>
+        <span data-i18n="newChat">New chat</span>
+      </button>
+
+      <div class="sidebar-label" data-i18n="recent">RECENT</div>
+      <div class="history-list" id="historyList">
+        <p class="history-empty" data-i18n="noChats">Your conversations will appear here.</p>
+      </div>
+
+      <div class="sidebar-bottom">
+        <button class="side-link" id="languageButton">
+          <span>◎</span>
+          <span data-i18n="language">Language</span>
+          <span class="side-value" id="languageValue">EN</span>
+        </button>
+        <button class="side-link" id="settingsButton">
+          <span>⚙</span>
+          <span data-i18n="settings">Settings</span>
+        </button>
+        <div class="profile">
+          <div class="avatar">N</div>
+          <div class="profile-copy">
+            <strong>NEXA AI</strong>
+            <small data-i18n="personalWorkspace">Personal workspace</small>
+          </div>
+          <span class="online-dot"></span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-button" id="openSidebar" aria-label="Open menu">☰</button>
+          <span class="breadcrumb">Workspace <span>/</span> <strong>NEXA AI</strong></span>
+        </div>
+        <div class="topbar-right">
+          <span class="status-pill"><i></i><span data-i18n="demoMode">Demo mode</span></span>
+          <button class="icon-button" id="topLanguage" aria-label="Switch language">文</button>
+        </div>
+      </header>
+
+      <section class="chat-area">
+        <div class="welcome" id="welcome">
+          <div class="orb-wrap">
+            <div class="orb-glow"></div>
+            <div class="orb"><span>N</span></div>
+          </div>
+          <div class="eyebrow"><span></span><span data-i18n="eyebrow">YOUR INTELLIGENT WORKSPACE</span></div>
+          <h1 data-i18n="headline">Ideas start here.<br><span>Possibilities go further.</span></h1>
+          <p class="welcome-copy" data-i18n="subheadline">Ask questions, explore ideas, and get help with your next big thing.</p>
+
+          <div class="suggestions">
+            <button class="suggestion" data-prompt="Help me brainstorm a creative project idea.">
+              <span class="suggestion-icon purple">✧</span>
+              <span><strong data-i18n="ideaTitle">Explore an idea</strong><small data-i18n="ideaDesc">Brainstorm something new</small></span>
+              <span class="suggestion-arrow">↗</span>
+            </button>
+            <button class="suggestion" data-prompt="Explain a difficult topic in simple steps.">
+              <span class="suggestion-icon blue">⌘</span>
+              <span><strong data-i18n="learnTitle">Learn something</strong><small data-i18n="learnDesc">Make complex topics simple</small></span>
+              <span class="suggestion-arrow">↗</span>
+            </button>
+            <button class="suggestion" data-prompt="Help me plan and organize a project.">
+              <span class="suggestion-icon cyan">▤</span>
+              <span><strong data-i18n="planTitle">Plan a project</strong><small data-i18n="planDesc">Turn thoughts into a plan</small></span>
+              <span class="suggestion-arrow">↗</span>
+            </button>
+            <button class="suggestion" data-prompt="Write a short, friendly introduction for a website.">
+              <span class="suggestion-icon pink">✎</span>
+              <span><strong data-i18n="writeTitle">Create something</strong><small data-i18n="writeDesc">Get help with your writing</small></span>
+              <span class="suggestion-arrow">↗</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="messages" id="messages" aria-live="polite"></div>
+      </section>
+
+      <section class="composer-section">
+        <div class="composer">
+          <textarea id="messageInput" rows="1" maxlength="4000" placeholder="Message NEXA AI..." data-i18n-placeholder="messagePlaceholder"></textarea>
+          <div class="composer-bottom">
+            <div class="composer-tools">
+              <button class="tool-button" id="attachButton" title="Attachments are coming later">＋ <span data-i18n="attach">Attach</span></button>
+              <div class="model-wrap">
+                <button class="tool-button model-button" id="modelButton">✧ <span id="modelName">NEXA Standard</span> <span class="chevron">⌄</span></button>
+                <div class="model-menu hidden" id="modelMenu">
+                  <button data-model="NEXA Standard">NEXA Standard <small>Default interface mode</small></button>
+                  <button data-model="NEXA Creative">NEXA Creative <small>Creative demo mode</small></button>
+                  <button data-model="NEXA Focus">NEXA Focus <small>Focused demo mode</small></button>
+                </div>
+              </div>
+            </div>
+            <button class="send-button" id="sendButton" aria-label="Send message">↑</button>
+          </div>
+        </div>
+        <p class="disclaimer" data-i18n="disclaimer">NEXA AI v1 is a frontend demo. Replies are examples, not live AI responses.</p>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <div class="modal-backdrop hidden" id="settingsModal">
+    <section class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="modal-heading">
+        <div>
+          <span class="modal-kicker">NEXA AI</span>
+          <h2 id="settingsTitle" data-i18n="settings">Settings</h2>
+        </div>
+        <button class="icon-button" id="closeSettings" aria-label="Close settings">×</button>
+      </div>
+      <div class="setting-row">
+        <div><strong data-i18n="language">Language</strong><small data-i18n="languageDesc">Choose your interface language.</small></div>
+        <button class="outline-button" id="settingsLanguage">English / العربية</button>
+      </div>
+      <div class="setting-row">
+        <div><strong data-i18n="clearHistory">Clear conversation history</strong><small data-i18n="clearDesc">Remove saved chats from this browser.</small></div>
+        <button class="danger-button" id="clearHistory" data-i18n="clearButton">Clear</button>
+      </div>
+      <div class="settings-note" data-i18n="settingsNote">Your demo conversations are stored locally in this browser. No account is required.</div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
